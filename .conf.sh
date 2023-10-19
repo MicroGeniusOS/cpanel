@@ -8,16 +8,17 @@ PASSV_MAX=$(echo $PASSV_PORT | cut -d':' -f2)
 ISVPS=$(((dmidecode -t system 2>/dev/null | grep "Manufacturer" | grep -i 'VMware\|KVM\|Bochs\|Virtual\|HVM' > /dev/null) || [ -f /proc/vz/veinfo ]) && echo "SI" || echo "NO")
 echo ""
 echo "
-///////////////////////// Me@MahfuzReham.Com /////////////////////////
-//                                                                    //
-//                                                                    //
-//                MD Mahfuz Reham - www.MahfuzReham.Com              //
-//                                                                    //
 ////////////////////////////////////////////////////////////////////////
+//                                                                    //
+//                                                                   //
+//                              MicroGenius Inc                     //
+//                        https://www.microgenius.net               //
+//                                                                 //
+////////////////////////////////////////////////////////////////////
 "
 echo ""
 echo ""
-echo "  ####################### WHM Install PreConfiguration by MahfuzReham.Com #######################  "
+echo "  ####################### WHM Install PreConfiguration #######################  "
 echo "" 
 echo ""
 echo "installs L3 Admin cPanel (CTRL + C to cancel)"
@@ -880,8 +881,8 @@ sed  -i '/\[mysqld\]/a tmp_table_size=192M' /etc/my.cnf
 sed  -i '/\[mysqld\]/a max_heap_table_size=256M' /etc/my.cnf
 sed  -i '/\[mysqld\]/a # WNPower pre-configured values' /etc/my.cnf
 /scripts/restartsrv_mysql
-echo "Updating a MariaDB 10.3..."
-whmapi1 start_background_mysql_upgrade version=10.3
+echo "Updating a MariaDB 11.3..."
+whmapi1 start_background_mysql_upgrade version=11.3.0
 echo "Configuring disabled features..."
 whmapi 1 update_featurelist featurelist = disabled api_shell = 0 agora = 0 analog = 0 boxtrapper = 0 traceaddy = 0 modules-php-pear = 0 modules-perl = 0 modules-ruby = 0 pgp = 0 phppgadmin = 0 postgres = 0 ror = 0 serverstatus = 0 webalizer = 0 clamavconnector_scan = 0 lists = 0
 echo "defaultSetting features..."
